@@ -1,0 +1,10 @@
+__pycache__/decode_file.cpython-310.pyc
+__pycache__/decode_utils.cpython-310.pyc
+__pycache__/output_format.cpython-310.pyc
+__pycache__/safe_open.cpython-310.pyc
+__pycache__/structs.cpython-310.pyc
+__pycache__/write_to_csv.cpython-310.pyc
+output/Notes.csv
+output/Position.csv
+replay.dat
+.vscode/launch.json
