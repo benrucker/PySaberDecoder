@@ -7,6 +7,7 @@ from safe_open import safe_open_w
 from structs import ReplayData
 from output_format import output_format
 
+# TODO: unpack nested values into individual columns
 
 def write_to_csv(replay: dict[str, list[ReplayData]], output_filename):
     for key, table in output_format.items():
