@@ -2,9 +2,8 @@ import struct
 
 from structs import ComboEvent, EnergyEvent, HeightEvent, Metadata, MultiplierEvent, NoteEvent, NoteEventType, NoteID, Pointers, ScoreEvent, VRPose, VRPoseGroup, VRPosition, VRRotation
 
+
 # Primitives
-
-
 def read_string(input: bytes, offset: dict[int]) -> str:
     string_length = struct.unpack_from("<i", input, offset['offset'])[0]
     value = input[offset['offset'] + 4: offset['offset'] + 4 + string_length].decode("utf-8")
@@ -30,7 +29,7 @@ def read_bool(input: bytes, offset: dict[int]) -> bool:
     return value
 
 
-# Not Primitives
+# Not primitives
 def read_vr_position(input: bytes, offset: dict[int]):
     return VRPosition(
         read_float(input, offset),
@@ -47,9 +46,8 @@ def read_vr_rotation(input: bytes, offset: dict[int]):
         read_float(input, offset)
     )
 
-# lists
 
-
+# Lists
 def read_string_array(_input: bytes, offset: dict[int]) -> list[str]:
     size = read_int(_input, offset)
     values = [read_string(_input, offset) for _ in range(size)]

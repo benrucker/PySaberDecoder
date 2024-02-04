@@ -1,3 +1,7 @@
+"""
+This variable can be changed to adjust the data that's included in the output.
+"""
+
 output_format = {
     'poseKeyframes': {
         'Name': 'Position',
