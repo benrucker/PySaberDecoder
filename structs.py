@@ -77,14 +77,16 @@ class Metadata(ReplayData):
 
 
 class ScoreEvent(ReplayData):
-    def __init__(self, Score=None, Time=None):
+    def __init__(self, Score=None, Time=None, ImmediateMaxPossibleScore=None):
         self.Score = Score
         self.Time = Time
+        self.ImmediateMaxPossibleScore = ImmediateMaxPossibleScore
 
     def to_dict(self):
         return {
             'Score': self.Score,
             'Time': self.Time,
+            'ImmediateMaxPossibleScore': self.ImmediateMaxPossibleScore,
         }
 
 
@@ -118,6 +120,12 @@ class NoteEvent(ReplayData):
                  Time=None,
                  UnityTimescale=None,
                  TimeSyncTimescale=None,
+                 # New in V3
+                 TimeDeviation=None,
+                 WorldRotation=None,
+                 InverseWorldRotation=None,
+                 NoteRotation=None,
+                 NotePosition=None,
                  ):
         self.NoteID = NoteID
         self.EventType = EventType
@@ -135,6 +143,11 @@ class NoteEvent(ReplayData):
         self.Time = Time
         self.UnityTimescale = UnityTimescale
         self.TimeSyncTimescale = TimeSyncTimescale
+        self.TimeDeviation = TimeDeviation
+        self.WorldRotation = WorldRotation
+        self.InverseWorldRotation = InverseWorldRotation
+        self.NoteRotation = NoteRotation
+        self.NotePosition = NotePosition
 
     def to_dict(self):
         return {
@@ -154,6 +167,11 @@ class NoteEvent(ReplayData):
             'Time': self.Time,
             'UnityTimescale': self.UnityTimescale,
             'TimeSyncTimescale': self.TimeSyncTimescale,
+            'TimeDeviation': self.TimeDeviation,
+            'WorldRotation': self.WorldRotation,
+            'InverseWorldRotation': self.InverseWorldRotation,
+            'NoteRotation': self.NoteRotation,
+            'NotePosition': self.NotePosition,
         }
 
 
@@ -171,12 +189,20 @@ class NoteID(ReplayData):
                  LineLayer=None,
                  LineIndex=None,
                  ColorType=None,
-                 CutDirection=None):
+                 CutDirection=None,
+                 # New in V3
+                 GameplayType=None,
+                 ScoringType=None,
+                 CutDirectionAngleOffset=None,
+                 ):
         self.Time = Time
         self.LineLayer = LineLayer
         self.LineIndex = LineIndex
         self.ColorType = ColorType
         self.CutDirection = CutDirection
+        self.GameplayType = GameplayType
+        self.ScoringType = ScoringType
+        self.CutDirectionAngleOffset = CutDirectionAngleOffset
 
     def __eq__(self, other):
         return math.isclose(self.Time, other.Time) and self.LineIndex == other.LineIndex and self.LineLayer == other.LineLayer and self.ColorType == other.ColorType and self.CutDirection == other.CutDirection
@@ -194,6 +220,9 @@ class NoteID(ReplayData):
             'LineIndex': self.LineIndex,
             'ColorType': self.ColorType,
             'CutDirection': self.CutDirection,
+            'GameplayType': self.GameplayType,
+            'ScoringType': self.ScoringType,
+            'CutDirectionAngleOffset': self.CutDirectionAngleOffset,
         }
 
 

@@ -153,7 +153,14 @@ def read_note_event(input, offset):
                      AfterCutRating=read_float(input, offset),
                      Time=read_float(input, offset),
                      UnityTimescale=read_float(input, offset),
-                     TimeSyncTimescale=read_float(input, offset))
+                     TimeSyncTimescale=read_float(input, offset),
+                     # New in V3
+                     TimeDeviation=read_float(input, offset),
+                     WorldRotation=read_vr_rotation(input, offset),
+                     InverseWorldRotation=read_vr_rotation(input, offset),
+                     NoteRotation=read_vr_rotation(input, offset),
+                     NotePosition=read_vr_position(input, offset)
+                     )
 
 
 def read_note_id(input, offset):
@@ -161,7 +168,12 @@ def read_note_id(input, offset):
                   LineLayer=read_int(input, offset),
                   LineIndex=read_int(input, offset),
                   ColorType=read_int(input, offset),
-                  CutDirection=read_int(input, offset))
+                  CutDirection=read_int(input, offset),
+                  # New in V3
+                  GameplayType=read_int(input, offset),
+                  ScoringType=read_int(input, offset),
+                  CutDirectionAngleOffset=read_float(input, offset) 
+                  )
 
 
 def read_height_change(input, offset):
@@ -171,7 +183,10 @@ def read_height_change(input, offset):
 
 def read_score_event(input, offset):
     return ScoreEvent(Score=read_int(input, offset),
-                      Time=read_float(input, offset))
+                      Time=read_float(input, offset),
+                      # New in V3
+                      ImmediateMaxPossibleScore=read_int(input, offset)
+                      )
 
 
 def read_combo_event(input, offset):
