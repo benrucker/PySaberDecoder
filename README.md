@@ -1,14 +1,6 @@
 # PySaberDecoder
 
-A Score Saber replay decoder written in Python.
-
-⚠ very WIP! ⚠
-
-### Planned features
-
-- Full decode support for Score Saber replay files
-- CSV & JSON support
-- Super easy usage & configuration
+A ScoreSaber replay decoder written in Python.
 
 ## Usage
 
@@ -31,6 +23,10 @@ cd PySaberDecoder
 ```sh
 python main.py -i path/to/your/input.dat -i path/to/the/output.csv
 ```
+
+## GUI Usage
+
+Instructions to come!
 
 ## Maintaining this project
 
