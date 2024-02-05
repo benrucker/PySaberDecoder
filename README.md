@@ -35,9 +35,17 @@ python main.py -i path/to/your/input.dat -i path/to/the/output.csv
 
 ## GUI Usage
 
-If you would like to use the GUI for a sinlge file use the GUI_SCORESABER_File.py. Once ran, you will have the option to select the .dat replay file and the output folder. Hit start once you have selected both. 
+If you would like to use the GUI for a sinlge file use the 
+```sh
+python GUI_SCORESABER_File.py
+```
+Once ran, you will have the option to select the .dat replay file and the output folder. Hit start once you have selected both. 
 
-If you would like to use the GUI for a batch of files use GUI_SCORESABER_Folder.py. Before running the program, put all .dat files into a folder on your computer. Now you can run the program to select the folder you created then press start. All files will be processed accordingly
+If you would like to use the GUI for a batch of files use
+```sh
+python GUI_SCORESABER_Folder.py
+```
+Before running the program, put all .dat files into a folder on your computer. Now you can run the program to select the folder you created then press start. All files will be processed accordingly
 
 ## Maintaining this project
 
