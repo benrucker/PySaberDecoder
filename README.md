@@ -35,13 +35,19 @@ python main.py -i path/to/your/input.dat -i path/to/the/output.csv
 
 ## GUI Usage
 
-If you would like to use the GUI for a sinlge file use the 
+1.`cd` into the project directory
+
+```sh
+cd PySaberDecoder
+```
+
+2a. If you would like to use the GUI for a sinlge file use the 
 ```sh
 python GUI_SCORESABER_File.py
 ```
 Once ran, you will have the option to select the .dat replay file and the output folder. Hit start once you have selected both. 
 
-If you would like to use the GUI for a batch of files use
+2b.If you would like to use the GUI for a batch of files use
 ```sh
 python GUI_SCORESABER_Folder.py
 ```
