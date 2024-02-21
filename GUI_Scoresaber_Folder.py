@@ -34,6 +34,8 @@ def processFilesInFolder():
         for file in dat_files:
             processFile(file)
             gui.update()  # Force the GUI to update
+            complete.config(text=f"Processing Done!!! 😎")
+            
 
 def processFile(file):
     global folder
