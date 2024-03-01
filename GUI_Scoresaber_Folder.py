@@ -54,9 +54,11 @@ def processFile(file):
     mergedRes2 = pd.merge(df1, df2, how='right', on='Time')
     mergedRes2.to_csv(os.path.join(output_folder, 'Notes.csv'), index=False)
 
-    mergedRes = pd.merge(df1, df2, how='left', on='Time')
-    mergedRes = mergedRes.drop(columns=["CutPoint.X", "CutPoint.Y", "CutPoint.Z", "CutPoint.Y", "CutNormal.X", "CutNormal.Y", "CutNormal.Z", "SaberDirection.X", "SaberDirection.Y", "SaberDirection.Z", "SaberType", "CutAngle", "CutDistanceToCenter", "CutDirectionDeviation", "BeforeCutRating", "AfterCutRating"])
-    mergedRes.to_csv(os.path.join(output_folder, 'Position.csv'), index=False)
+    # Remove the second row (considering the first row as headers, so technically this is the first data row)
+    df1.drop(df1.index[0], inplace=True)
+    # Remove none unique rows for time
+    df1.drop_duplicates(subset=['Time'], inplace=True)
+    df1.to_csv(os.path.join(output_folder, 'Position.csv'), index=False)
 
     # Update the completion label for each file processed
     complete.config(text=f"Completed: {os.path.basename(file)}")

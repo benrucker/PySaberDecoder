@@ -83,9 +83,11 @@ def doSomethingWithFolder():
     df2=pd.read_csv(f'{folder2}/Notes.csv')
     mergedRes2 = pd.merge(df1, df2,how='right', on ='Time')
     mergedRes2.to_csv(f'{folder2}/Notes.csv')
-    mergedRes = pd.merge(df1, df2,how='left', on ='Time')
-    mergedRes= mergedRes.drop(columns=["CutPoint.X","CutPoint.Y","CutPoint.Z","CutPoint.Y","CutNormal.X","CutNormal.Y","CutNormal.Z","SaberDirection.X","SaberDirection.Y","SaberDirection.Z","SaberType","CutAngle","CutDistanceToCenter","CutDirectionDeviation","BeforeCutRating","AfterCutRating"])
-    mergedRes.to_csv(f'{folder2}/Position.csv')
+    # Remove the second row (considering the first row as headers, so technically this is the first data row)
+    df1.drop(df1.index[0], inplace=True)
+    # Remove none unique rows for time
+    df1.drop_duplicates(subset=['Time'], inplace=True)
+    df1.to_csv(f'{folder2}/Position.csv')
     complete.config(text=f"Complete!!! 😎")
 
 
@@ -108,4 +110,3 @@ lblError.grid(row=3, column=1)
 complete=Label(gui, text="", font=('Aerial 11'))
 complete.grid(row=3, column=1)
 gui.mainloop()
-
